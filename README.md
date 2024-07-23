@@ -1,6 +1,6 @@
 # Language-Identification
 Language Identification using Python
-In this repos, we have to start from scratch with all the step:
+# In this repos, we have to start from scratch with all the step:
 - Bắt đầu (Start): The process begins.
 - Nhập dữ liệu (Data input): Data is input into the system.
 - Tiền xử lý dữ liệu (Data preprocessing): The data is preprocessed to clean and prepare it for analysis.
@@ -12,7 +12,7 @@ In this repos, we have to start from scratch with all the step:
 - Kiểm thử với đầu vào mới (Testing with new input): The model is tested with new input data to check its effectiveness.
 - Đánh giá tổng quát (Overall evaluation): An overall evaluation of the model's performance is conducted.
 - Kết thúc (End): The process ends.
-We also gonna use these libraries:
+# We also gonna use these libraries:
 -	NumPy: là thư viện cơ bản cho tính toán khoa học trong Python, cung cấp cấu trúc mảng đa chiều hiệu quả và các hàm toán học mạnh mẽ.
 -	Pandas: là thư viện phân tích dữ liệu mạnh mẽ, cung cấp cấu trúc DataFrame cho phép lưu trữ và thao tác dữ liệu dạng bảng dễ dàng.
 -	Scikit-learn (sklearn): là thư viện hàng đầu cho học máy, cung cấp các thuật toán phân loại, hồi quy, phân cụm và các công cụ đánh giá mô hình.
