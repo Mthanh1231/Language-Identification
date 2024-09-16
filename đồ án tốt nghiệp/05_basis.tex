@@ -1,0 +1,982 @@
+\setlength{\headheight}{14.93912pt}  % Điều chỉnh chiều cao của header
+\addtolength{\topmargin}{-2.93912pt} % Giảm lề trên để bù trừ cho chiều cao header
+
+\pagestyle{fancy} 
+
+\fancyhf{}  % Xóa tất cả các thiết lập mặc định cho header và footer
+\fancyhead[L]{Chương 2: Cơ sở lý thuyết}  % Header bên trái (L)
+\fancyhead[R]{Bùi Minh Thành}  % Header bên phải (R)
+
+\fancyfoot[C]{\thepage}  % Đặt số trang vào footer ở giữa (C)
+
+\chapter[Cơ sở lý thuyết]{\centering Cơ sở lý thuyết}
+
+\section{Định lý Bayes:}
+
+\subsection{Lịch sử nguồn gốc ra đời của thuật toán:}
+
+Định lý Bayes (Bayes theorem) được đặt tên theo nhà toán học Thomas Bayes (1701 – 1761).
+
+Thomas Bayes là một nhà toán học người Scotland, sinh vào năm 1701. Ông không được biết đến rộng rãi trong thời đại của mình và không để lại nhiều thông tin về cuộc đời cá nhân. Bayes là một nhà thần học Presbytery tại Nonconformist Bunhill Fields ở London và không có bất kỳ bằng cấp học vị đại học nào. Tuy nhiên, ông có một niềm đam mê sâu sắc với toán học và khoa học tự nhiên.
+
+Vào năm 1763, tại Hội Hoàng gia ở Luân Đôn, một người bạn của Thomas Bayes là Richard Price đã trình bày bài luận của Thomas Bayes, giải quyết một khó khăn trong lý thuyết xác suất. Bayes đã quan tâm đến việc làm thế nào để biến quan sát một sự kiện thành một ước tính về cơ hội của sự kiện xảy ra lần nữa.
+
+Trong bài báo của mình, Bayes minh họa vấn đề với một câu hỏi bí truyền về vị trí của quả bóng bi-a lăn trên bàn. Ông đã đưa ra một công thức mà biến quan sát các địa điểm cuối cùng của bi-a thành một ước tính về cơ hội quả bóng lăn sau đó. Nói cách khác, công việc của ông cho phép quan sát được sử dụng để suy ra xác suất mà giả thuyết có thể đúng. Bayes do đó đã đặt nền tảng cho việc định lượng niềm tin.
+
+\subsection{Phát biểu định lý Bayes:}
+
+Định lý Bayes là một trong những công cụ quan trọng nhất trong lý thuyết xác suất và thống kê. Là một phương pháp tính xác suất có điều kiện, cho phép tính xác suất xảy ra của một sự kiện ngẫu nghiên A khi biết sự kiện liên quan đến B đã xảy ra.
+
+\begin{itemize}
+    \item Xác xuất này được kí hiệu là:
+     \[P(A \mid B)\]
+    \item Đọc là “xác xuất của A nếu có B”. Đại lượng này được gọi là xác suất có điều kiện (hay xác suất hậu nghiệm) vì nó được rút ra từ giá trị được cho của X hoặc phụ thuộc vào giá trị đó.
+\end{itemize}
+	
+\subsection{Công thức của định lý Bayes:}
+
+\begin{itemize}
+
+    \item Nếu A và B là hai sự kiện trong một không gian xác suất và \( P(B) \neq 0 \), thì xác suất điều kiện của A khi biết B được tính theo công thức:
+    \[P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}\]
+    \begin{itemize}
+        \item \( P(A \mid B) \) là xác suất của sự kiện A xảy ra khi biết rằng B đã xảy ra.
+        \item \( P(B \mid A) \) là xác suất của sự kiện B xảy ra khi biết rằng A đã xảy ra.
+        \item \( P(A) \) là xác suất tiên nghiệm của sự kiện A.
+        \item \( P(B) \) là xác suất tiên nghiệm của sự kiện B.
+    \end{itemize}
+    \item Giải thích chi tiết công thức:
+    \begin{itemize}
+        \item  Xác suất tiên nghiệm (Prior Probability) P(A): Đây là xác suất ban đầu của sự kiện A trước khi có bất kỳ thông tin nào về sự kiện B.
+        \item Xác suất có điều kiện (Conditional Probability) \(P(B \mid A)\): Đây là xác suất của sự kiện B xảy ra khi biết rằng sự kiện A đã xảy ra.
+        \item Xác suất hậu nghiệm (Posterior Probability) \(P(A \mid B)\): Đây là xác suất của sự kiện A xảy ra sau khi biết rằng sự kiện B đã xảy ra. Đây là xác suất mà chúng ta muốn tính toán dựa trên thông tin mới.
+        \item Xác suất biên (Marginal Probability) P(B): Đây là xác suất của sự kiện B xảy ra, không phụ thuộc vào sự kiện A. Nó có thể được tính như là tổng của các xác suất của B dưới mọi trường hợp có thể xảy ra của A:
+        \begin{itemize}
+            \item \[P(B) = P(B \mid A) \cdot P(A) + P(B \mid \neg A) \cdot P(\neg A)\]
+            \item Trong đó ¬A là sự kiện đối ngẫu với A, tức là sự kiện A không xảy ra.
+        \end{itemize}
+    \end{itemize}
+    \item Ngoài ra thì Định lý Bayes còn có các dạng khác được mở rộng từ định lý và được dùng trong các trường hợp cụ thể như:
+    \begin{enumerate}
+        \item Định lý Bayes mở rộng (Extended Bayes' Theorem):
+        \begin{itemize}
+            \item Mô tả: Định lý Bayes mở rộng áp dụng khi có nhiều hơn hai sự kiện được xem xét. Nó cung cấp một cách tiếp cận cho việc tính toán xác suất có điều kiện của một sự kiện trong một tình huống phức tạp hơn, khi có nhiều yếu tố ảnh hưởng.
+            \item Ứng dụng: Dùng trong các hệ thống phức tạp như phân tích thị trường chứng khoán, dự báo thời tiết, hoặc các mô hình thống kê đa biến.
+        \end{itemize}
+        \item Định lý Bayes phi thường (Bayesian Theorem of Rare Events):
+        \begin{itemize}
+            \item Mô tả: Định lý Bayes phi thường áp dụng khi sự kiện X là một sự kiện hiếm, có xác suất xảy ra rất nhỏ. Trong trường hợp này, công thức của Định lý Bayes có thể được đơn giản hóa để dễ dàng tính toán.
+            \item Ứng dụng: Phân tích rủi ro, dự báo thiên tai, xác định xác suất sự cố hiếm gặp trong công nghiệp.
+        \end{itemize}
+        \clearpage
+        \item Định lý Bayes phi tuyến tính (Nonlinear Bayesian Theorem):
+        \begin{itemize}
+            \item Mô tả: Định lý Bayes phi tuyến tính áp dụng trong các tình huống mà mối quan hệ giữa các biến không phải là tuyến tính. Trong trường hợp này, các phép tính xác suất có điều kiện sẽ không tuân theo quy tắc nhân ma trận hay tích chập, mà thay vào đó sẽ sử dụng các phương pháp tính toán phức tạp hơn như phương pháp Monte Carlo.
+            \item Ứng dụng: Mô hình hóa các hệ thống sinh học phức tạp, phân tích dữ liệu phi tuyến tính trong kinh tế học, vật lý hạt nhân.
+        \end{itemize}
+        \item Định lý Bayes với ước lượng tiền nghiệm không chính xác (Bayes' Theorem with Inaccurate Prior Estimates):
+        \begin{itemize}
+            \item Mô tả: Định lý Bayes này được áp dụng khi ước lượng tiền nghiệm (prior estimates) của các xác suất ban đầu không chắc chắn hoặc không chính xác. Trong trường hợp này, các phương pháp thống kê Bayesian có thể được sử dụng để cập nhật ước lượng của chúng ta dựa trên dữ liệu mới.
+            \item Ứng dụng: Phân tích các kết quả nghiên cứu khoa học với dữ liệu không hoàn hảo, cập nhật mô hình dự báo thị trường tài chính dựa trên dữ liệu mới.
+        \end{itemize}
+        \item Định lý Bayes trong mô hình học máy (Bayes' Theorem in Machine Learning Models):
+        \begin{itemize}
+            \item Mô tả: Trong lĩnh vực học máy, Định lý Bayes được sử dụng trong các mô hình học máy Bayes, trong đó các xác suất được ước lượng dựa trên các điểm dữ liệu đào tạo và sử dụng để đưa ra dự đoán cho các điểm dữ liệu mới.
+            \item Ứng dụng: Phân loại văn bản, nhận dạng hình ảnh, dự báo chuỗi thời gian, các hệ thống khuyến nghị.
+        \end{itemize}
+    \end{enumerate}
+
+\end{itemize}
+
+\subsection{Chứng minh định lý Bayes:}
+
+\begin{enumerate}
+    \item Sử dụng định nghĩa xác suất có điều kiện:
+    \begin{itemize}
+        \item Xác suất có điều kiện của một biến cố \(A\) khi đã biết biến cố \(B\) đã xảy ra được định nghĩa là tỷ lệ giữa các xác suất của sự kiện \(A\) và xác suất của sự kiện \(B\) đã xảy ra, khi biết rằng \(B\) đã xảy ra:
+\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \quad \text{với } P(B) \neq 0\]
+        \item Tương tự, xác suất có điều kiện của sự kiện \(B\) khi biết \(A\) đã xảy ra:
+\[P(B \mid A) = \frac{P(A \cap B)}{P(A)}, \quad \text{với } P(A) \neq 0\]
+        \item Suy diễn từ định nghĩa:
+\[P(A \cap B) = P(A \mid B) \cdot P(B)\]
+\[P(A \cap B) = P(B \mid A) \cdot P(A)\]
+        \item Vì \(P(A \cap B)\) là xác suất của \(A\) và \(B\) xảy ra đồng thời, hai công thức trên đều mô tả cùng một giá trị. Do đó, ta có:
+\[P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A)\]
+        \item Thay thế vào công thức xác suất có điều kiện:
+\[P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}\]       
+    \end{itemize}
+
+\end{enumerate}
+
+\subsection{Ví dụ minh họa cho định lý Bayes:}
+
+\begin{itemize}
+
+    \item Yêu Cầu: Xác định ngôn ngữ (Tiếng Anh, Tiếng Pháp, hoặc Tiếng Tây Ban Nha) của một tài liệu dựa trên các từ xuất hiện trong tài liệu đó.
+    \item Đầu Vào:
+    \begin{itemize}
+        \item Một tài liệu chứa một loạt các từ.
+        \item Tỉ lệ xuất hiện của từng từ trong tài liệu so với mỗi ngôn ngữ.
+    \end{itemize}
+    \item Các bước thực hiện tính toán:
+
+        \subsubsection{ Bước 1: Thu thập dữ liệu:}
+        \begin{itemize}
+            \item Giả sử ta có một tài liệu với các từ sau: "the", "chat", "gato". 
+            \item Ta cũng có thông tin về tỉ lệ xuất hiện của các từ này trong ba ngôn ngữ:
+            \begin{itemize}
+            \item Tiếng Anh:
+            \begin{itemize}
+                \item "the": 0.07
+                \item "chat": 0.01
+                \item "gato": 0.001
+            \end{itemize}
+            \item Tiếng Pháp:
+            \begin{itemize}
+                \item "the": 0.01
+                \item "chat": 0.05
+                \item "gato": 0.002
+            \end{itemize}
+            \item Tiếng Tây Ban Nha:
+            \begin{itemize}
+                \item "the": 0.01
+                \item "chat": 0.001
+                \item "gato": 0.04
+            \end{itemize}
+        \end{itemize}
+        \item Giả sử xác suất tiên nghiệm của mỗi ngôn ngữ (trước khi biết bất kỳ từ nào) là như nhau: 
+        \[P(\text{English}) = P(\text{French}) = P(\text{Spanish}) = \frac{1}{3}\]
+        \end{itemize}
+        \subsubsection{ Bước 2: Áp dụng Định lý Bayes:}
+        Ta sẽ tính xác suất hậu nghiệm của mỗi ngôn ngữ dựa trên các từ trong tài liệu. Định lý Bayes:
+        \[P(\text{Language} \mid \text{Words}) = \frac{P(\text{Words} \mid \text{Language}) \cdot P(\text{Language})}{P(\text{Words})}\]
+        \begin{itemize}
+            \item Trong đó:
+        \begin{itemize}
+            \item \(P(\text{Words} \mid \text{Language})\) là xác suất các từ xuất hiện trong tài liệu khi biết ngôn ngữ.
+            \item \(P(\text{Language})\) là xác suất tiên nghiệm của ngôn ngữ.
+            \item \(P(\text{Words})\) là xác suất biên của các từ xuất hiện trong tài liệu.
+        \end{itemize}     
+        \end{itemize}
+        \subsubsection{ Bước 3: tính toán xác suất các từ xuất hiện trong tài liệu đối với từng ngôn ngữ:}
+        \begin{itemize}
+            \item Giả sử các từ xuất hiện độc lập, ta có:
+        \[P(\text{Words} \mid \text{English}) = P(\text{the} \mid \text{English}) \cdot P(\text{chat} \mid \text{English}) \cdot P(\text{gato} \mid \text{English})\]
+        \[P(\text{Words} \mid \text{English}) = 0.07 \cdot 0.01 \cdot 0.001 = 0.0000007 \]
+        \[P(\text{Words} \mid \text{French}) = P(\text{the} \mid \text{French}) \cdot P(\text{chat} \mid \text{French}) \cdot P(\text{gato} \mid \text{French})\]
+        \[ P(\text{Words} \mid \text{French}) = 0.01 \cdot 0.05 \cdot 0.002 = 0.000001 \]
+        \[P(\text{Words} \mid \text{Spanish}) = P(\text{the} \mid \text{Spanish}) \cdot P(\text{chat} \mid \text{Spanish}) \cdot P(\text{gato} \mid \text{Spanish})\]
+        \[P(\text{Words} \mid \text{Spanish}) = 0.01 \cdot 0.001 \cdot 0.04 = 0.0000004\]
+            \item Xác suất tiên nghiệm của mỗi ngôn ngữ:
+        \[P(\text{English}) = P(\text{French}) = P(\text{Spanish}) = \frac{1}{3}\]
+            \item Xác suất biên của các từ xuất hiện trong tài liệu:
+    \begin{align*}
+        P(\text{Words}) &= P(\text{Words} \mid \text{English}) \cdot P(\text{English}) \\
+        &+ P(\text{Words} \mid \text{French}) \cdot P(\text{French}) \\
+        &+ P(\text{Words} \mid \text{Spanish}) \cdot P(\text{Spanish})
+    \end{align*}
+    \begin{align*}
+        P(\text{Words}) &= 0.0000007 \cdot \frac{1}{3} + 0.000001 \cdot \frac{1}{3} + 0.0000004 \cdot \frac{1}{3} \\
+        &= 0.000000233 + 0.000000333 + 0.000000133 \\
+        &= 0.000000699
+    \end{align*}
+            \item Xác suất hậu nghiệm của từng ngôn ngữ: 
+        \[P(\text{English} \mid \text{Words}) = \frac{P(\text{Words} \mid \text{English}) \cdot P(\text{English})}{P(\text{Words})} \]
+        \[P(\text{English} \mid \text{Words}) = \frac{0.0000007 \cdot \frac{1}{3}}{0.000000699} = \frac{0.000000233}{0.000000699} \approx 0.33\]
+        \[P(\text{French} \mid \text{Words}) = \frac{P(\text{Words} \mid \text{French}) \cdot P(\text{French})}{P(\text{Words})}\]
+        \[P(\text{French} \mid \text{Words}) = \frac{0.000001 \cdot \frac{1}{3}}{0.000000699} = \frac{0.000000333}{0.000000699} \approx 0.476\] 
+        \[P(\text{Spanish} \mid \text{Words}) = \frac{P(\text{Words} \mid \text{Spanish}) \cdot P(\text{Spanish})}{P(\text{Words})} \]
+        \[P(\text{Spanish} \mid \text{Words}) = \frac{0.0000004 \cdot \frac{1}{3}}{0.000000699} = \frac{0.000000133}{0.000000699} \approx 0.190 \]
+        \end{itemize}
+        \subsubsection{ Bước 4: Kết luận:}
+        \begin{itemize}
+            \item  Dựa trên các tính toán trên, xác suất hậu nghiệm cho từng ngôn ngữ là:
+        \begin{itemize}
+            \item Tiếng Anh: 33.3\%
+            \item Tiếng Pháp: 47.6\%
+            \item Tiếng Tây Ban Nha: 19.0\%
+        \end{itemize}
+            \item Do đó, tài liệu có khả năng cao nhất là bằng Tiếng Pháp.
+        \end{itemize}
+        \subsubsection{ Tóm tắt các bước tính toán:}
+        \begin{itemize}
+            \item Thu thập dữ liệu về tỉ lệ xuất hiện của từ trong từng ngôn ngữ và xác suất tiên nghiệm.
+            \item Tính xác suất các từ xuất hiện trong tài liệu đối với từng ngôn ngữ.
+            \item Tính xác suất biên của các từ xuất hiện trong tài liệu.
+            \item Áp dụng Định lý Bayes để tính xác suất hậu nghiệm của từng ngôn ngữ.
+            \item So sánh các xác suất hậu nghiệm để xác định ngôn ngữ có khả năng cao nhất.
+        \end{itemize}
+     
+
+\end{itemize}
+
+\section{Thuật toán phân loại Naïve Bayes (Naive Bayes Classifier (NBC)):}
+
+\subsection{Lịch sử nguồn gốc ra đời của thuật toán:}
+
+Cùng với sự phát triển của định lý Bayes và sự phát triển của lĩnh vực máy học và trí tuệ nhân tạo, thuật toán Naïve Bayes đã được ra đời và áp dụng vào lý thuyết xác suất với vai trò là phân loại dữ liệu.
+
+\subsection{Nguồn gốc tên gọi “Naïve”:}
+
+Thuật toán được gọi là “Naïve” vì giả định này thường không đúng trong thực tế, trong nhiều trường hợp bởi vì các đặc trưng thường có sự phụ thuộc lẫn nhau.
+Tuy nhiên, giả định Naïve thường không ảnh hưởng đến hiệu suất của thuật toán vì nó vẫn cho kết quả phân loại tốt trên nhiều tập dữ liệu thực tế.
+
+\subsection{Công thức của Phân loại Bayes:}
+
+Giả sử ta có một tập dữ liệu với các đặc trưng $X = \{ x_1, x_2, \dots, x_n \}$ và một tập các lớp $C = \{ C_1, C_2, \dots, C_n \}$. 
+Ta muốn xác định lớp $C_i$ của một mẫu mới dựa trên các đặc trưng của nó.
+\begin{itemize}
+
+    \item Theo định lý Naïve Bayes, xác suất của lớp $C_i$ khi biết các đặc trưng $X$ được tính như sau:
+\[P(C_i \mid X) = \frac{P(X \mid C_i) \cdot P(C_i)}{P(X)}\]
+    \item Giả định độc lập:
+    \begin{itemize}
+        \item Giả định rằng các đặc trưng $x_j$ là độc lập với nhau khi biết lớp $C_i$, ta có:
+\[P(X \mid C_i) = P(x_1, x_2, \dots, x_n \mid C_i) = P(x_1 \mid C_i) \cdot P(x_2 \mid C_i) \cdot \dots \cdot P(x_n \mid C_i)\]
+    \item Do đó, công thức Naïve Bayes trở thành:
+\[P(C_i \mid X) = \frac{P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)}{P(X)}\]
+    \item Bỏ qua xác suất biên: Vì $P(X)$ là một hằng số không phụ thuộc vào lớp $C_i$, ta có thể bỏ qua nó khi so sánh xác suất giữa các lớp. Ta chỉ cần tính:
+\[P(C_i \mid X) \propto P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)\]
+    \item Phương pháp tối đa hóa: Để xác định lớp $C_i$ cho một mẫu mới, ta chọn lớp có xác suất lớn nhất:
+    \[\hat{C} = \arg\max_{C_i \in C} P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)\]
+    \end{itemize}
+
+\end{itemize}
+
+\subsection{Chứng minh tính đúng của thuật toán phân loại Naïve Bayes:}
+
+\begin{itemize}
+    \item Từ định nghĩa xác suất có điều kiện của một sự kiện $A$ khi biết sự kiện $B$ được định nghĩa là:
+\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]
+    \item Áp dụng định lý Bayes, xác suất có điều kiện của lớp $C_i$ khi biết $X$ chính là:
+\[P(C_i \mid X) = \frac{P(X \mid C_i) \cdot P(C_i)}{P(X)}\]
+    \item Ta có giả định độc lập:
+    \begin{itemize}
+        \item Giả định rằng các đặc trưng $x_j$ là độc lập với nhau khi biết lớp $C_i$, ta có:
+\[P(X \mid C_i) = P(x_1, x_2, \dots, x_n \mid C_i) = P(x_1 \mid C_i) \cdot P(x_2 \mid C_i) \cdot \dots \cdot P(x_n \mid C_i)\]
+        \item Do đó, công thức Naïve Bayes trở thành:
+\[P(C_i \mid X) = \frac{P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)}{P(X)}\]
+        \item Bỏ qua xác suất biên: Vì $P(X)$ là một hằng số không phụ thuộc vào lớp $C_i$, ta có thể bỏ qua nó khi so sánh xác suất giữa các lớp. Ta chỉ cần tính:
+\[P(C_i \mid X) \propto P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)\]
+\end{itemize}
+    \item Phương pháp tối đa hóa: Để xác định lớp $C_i$ cho một mẫu mới, ta chọn lớp có xác suất lớn nhất:
+\[\hat{C} = \arg\max_{C_i \in C} P(C_i) \cdot \prod_{j=1}^n P(x_j \mid C_i)\]
+
+\end{itemize}
+
+\subsection{Ví dụ minh họa của thuật toán phân loại Naïve Bayes:}
+
+Giả sử chúng ta có một tập dữ liệu đơn giản với hai lớp: "spam" và "not spam", và các đặc trưng là các từ trong email.
+
+Tập dữ liệu gồm 10 email, trong đó 5 email là "spam" và 5 email là "not spam". Các đặc trưng (từ) bao gồm "cheap", "offer", "winner", "click". Bảng dữ liệu như sau:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Email} & \textbf{Cheap} & \textbf{Offer} & \textbf{Winner} & \textbf{Click} & \textbf{Class} \\
+\hline
+Email 1 & 1 & 1 & 0 & 1 & Spam \\
+Email 2 & 1 & 0 & 1 & 0 & Spam \\
+Email 3 & 0 & 1 & 0 & 1 & Spam \\
+Email 4 & 1 & 1 & 1 & 0 & Spam \\
+Email 5 & 1 & 0 & 0 & 1 & Spam \\
+Email 6 & 0 & 1 & 1 & 0 & Not Spam \\
+Email 7 & 0 & 0 & 1 & 0 & Not Spam \\
+Email 8 & 0 & 1 & 0 & 1 & Not Spam \\
+Email 9 & 0 & 0 & 1 & 0 & Not Spam \\
+Email 10 & 0 & 1 & 0 & 0 & Not Spam \\
+\hline
+\end{tabular}
+\caption{Tập dữ liệu với email, từ và lớp.}
+\end{table}
+
+\subsubsection{Bước 1: Tính xác suất tiên nghiệm:}
+
+Xác suất tiên nghiệm của mỗi lớp:
+
+\[
+P(\text{Spam}) = \frac{5}{10} = 0.5
+\]
+\[
+P(\text{Not Spam}) = \frac{5}{10} = 0.5
+\]
+
+\subsubsection{Bước 2: Tính xác suất có điều kiện:}
+
+Xác suất có điều kiện của mỗi từ trong mỗi lớp:
+
+\begin{itemize}
+    \item Cheap:
+    \begin{itemize}
+        \item Trong 5 email spam, từ "cheap" xuất hiện 4 lần.
+        \item Trong 5 email not spam, từ "cheap" không xuất hiện.
+    \end{itemize}
+    \[P(\text{Cheap} \mid \text{Spam}) = \frac{4}{5} = 0.8\]
+    \[P(\text{Cheap} \mid \text{Not Spam}) = \frac{0}{5} = 0.0 \]
+ 
+    \item Offer:
+    \begin{itemize}
+        \item Trong 5 email spam, từ "offer" xuất hiện 3 lần.
+        \item Trong 5 email not spam, từ "offer" cũng xuất hiện 3 lần.
+    \end{itemize}
+    \[ P(\text{Offer} \mid \text{Spam}) = \frac{3}{5} = 0.6 \]
+    \[P(\text{Offer} \mid \text{Not Spam}) = \frac{3}{5} = 0.6\]
+    
+    \item Winner:
+    \begin{itemize}
+        \item Trong 5 email spam, từ "winner" xuất hiện 1 lần.
+        \item Trong 5 email not spam, từ "winner" xuất hiện 3 lần.
+    \end{itemize}
+    \[P(\text{Winner} \mid \text{Spam}) = \frac{1}{5} = 0.2\]
+    \[P(\text{Winner} \mid \text{Not Spam}) = \frac{3}{5} = 0.6 \]
+    
+    \item Click:
+    \begin{itemize}
+        \item Trong 5 email spam, từ "click" xuất hiện 3 lần.
+        \item Trong 5 email not spam, từ "click" xuất hiện 1 lần.
+    \end{itemize}
+    \[P(\text{Click} \mid \text{Spam}) = \frac{3}{5} = 0.6\]
+    \[P(\text{Click} \mid \text{Not Spam}) = \frac{1}{5} = 0.2\]
+    \end{itemize}
+
+\subsubsection{Bước 3: Tính xác suất tổng hợp:}
+
+Giả sử có một email mới với các từ: "cheap", "offer", "click". Email mới có thể được biểu diễn như sau:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Email & Cheap & Offer & Winner & Click \\
+\hline
+New Email & 1 & 1 & 0 & 1 \\
+\hline
+\end{tabular}
+\caption{Email mới với các từ và đặc trưng.}
+\end{table}
+
+\begin{itemize}
+    \item Tính xác suất tổng hợp cho lớp "Spam":
+    \begin{multline*}
+    P(\text{Spam} \mid \text{New Email}) \propto P(\text{Spam}) \cdot P(\text{Cheap} \mid \text{Spam}) \\
+    \cdot P(\text{Offer} \mid \text{Spam}) \cdot P(\text{Click} \mid \text{Spam})
+    \end{multline*}
+    \[
+    P(\text{Spam} \mid \text{New Email}) \propto 0.5 \cdot 0.8 \cdot 0.6 \cdot 0.6 = 0.5 \cdot 0.288 = 0.144
+    \]
+
+    \item Tính xác suất tổng hợp cho lớp "Not Spam":
+    \begin{multline*}
+    P(\text{Not Spam} \mid \text{New Email}) \propto P(\text{Not Spam}) \cdot P(\text{Cheap} \mid \text{Not Spam}) \\
+    \cdot P(\text{Offer} \mid \text{Not Spam}) \cdot P(\text{Click} \mid \text{Not Spam})
+    \end{multline*}
+    \[
+    P(\text{Not Spam} \mid \text{New Email}) \propto 0.5 \cdot 0.0 \cdot 0.6 \cdot 0.2 = 0.5 \cdot 0 = 0
+    \]
+\end{itemize}
+
+
+\subsubsection{Bước 4: Phân lớp:}
+So sánh xác suất tổng hợp:
+\[
+P(\text{Spam} \mid \text{New Email}) = 0.144
+\]
+\[
+P(\text{Not Spam} \mid \text{New Email}) = 0
+\]
+
+Vì \(0.144 > 0\), email mới được phân loại là "Spam".
+    
+\subsection{Một số kiểu mô hình Naive Bayes:}
+
+\begin{enumerate}
+    \item Multinomial Naïve Bayes (MNB):
+    \begin{itemize}
+        \item Mô tả: Multinomial Naïve Bayes là một loại mô hình Naïve Bayes thường được sử dụng trong xử lý dữ liệu rời rạc, nơi mỗi đặc trưng là số lần xuất hiện của một từ hoặc một thuộc tính trong một mẫu. Mô hình này giả định rằng các đặc trưng theo phân phối đa thức (multinomial distribution).
+        \item Ứng dụng:
+        \begin{itemize}
+            \item Phân loại văn bản: Ví dụ như lọc email spam, phân loại tài liệu, hoặc phân tích cảm xúc. Trong trường hợp này, mỗi tài liệu là một mẫu và mỗi từ trong từ vựng là một đặc trưng. Mô hình sẽ tính xác suất một tài liệu thuộc về một lớp dựa trên tần suất xuất hiện của các từ trong tài liệu đó.
+            \item Xử lý ngôn ngữ tự nhiên: Áp dụng trong các hệ thống gợi ý, tìm kiếm thông tin và các bài toán phân loại khác liên quan đến văn bản.
+        \end{itemize}
+    \end{itemize}
+\item Gaussian Naïve Bayes:
+\begin{itemize}
+    \item Mô tả: Gaussian Naïve Bayes được sử dụng khi dữ liệu đầu vào là liên tục và giả định rằng các đặc trưng tuân theo phân phối Gaussian (hay phân phối chuẩn). Điều này có nghĩa là giá trị của mỗi đặc trưng được mô tả bằng một đường cong chuông.
+    \item Ứng dụng:
+    \begin{itemize}
+        \item Dự đoán hành vi mua hàng: Ví dụ, nếu chúng ta đang xây dựng một mô hình để dự đoán nếu một người nào đó sẽ mua một sản phẩm dựa trên chiều cao và cân nặng của họ thì có thể sử dụng Gaussian Naïve Bayes.
+        \item Phân loại các biến liên tục: Như dự đoán điểm số học tập dựa trên các đặc trưng liên tục như thời gian học tập và số giờ ngủ.
+    \end{itemize}
+\end{itemize}
+\item Bernoulli Naïve Bayes:
+\begin{itemize}
+    \item Mô tả: Bernoulli Naïve Bayes tương tự như Multinomial Naive Bayes, nhưng thay vì đếm số lần xuất hiện của một từ trong một mẫu, nó chỉ xem xét xem một từ có xuất hiện trong một mẫu hay không. Loại mô hình này thích hợp khi dữ liệu đầu vào là nhị phân, có nghĩa là mỗi đặc trưng chỉ nhận một trong hai giá trị như “có” hoặc “không”.
+    \item Ứng dụng:
+    \begin{itemize}
+        \item Phát hiện thư rác (spam detection): Mỗi email được biểu thị bằng các đặc trưng nhị phân cho biết sự hiện diện hoặc vắng mặt của một từ cụ thể.
+        \item Phân loại nhị phân: Như dự đoán xem một người có mắc một bệnh cụ thể hay không dựa trên các triệu chứng có/không.
+    \end{itemize}
+\end{itemize}
+\item Complement Naïve Bayes:
+\begin{itemize}
+    \item Mô tả: Là một biến thể của Multinomial Naïve Bayes, Complement Naïve Bayes được thiết kế đặc biệt để xử lý các vấn đề mất cân bằng lớp (class imbalance). Thay vì tính xác suất cho mỗi lớp độc lập, mô hình này tính xác suất đối với các lớp còn lại và sau đó lấy nghịch đảo của nó.
+    \item Ứng dụng:
+    \begin{itemize}
+        \item Phân loại văn bản với lớp mất cân bằng: Hiệu quả hơn khi phân loại các lớp với số lượng mẫu không đều nhau, ví dụ như khi lớp “spam” ít xuất hiện hơn so với lớp “non-spam”.
+        \item Xử lý các bài toán mất cân bằng lớp: Trong các lĩnh vực như y tế (phát hiện bệnh hiếm gặp) hoặc an ninh (phát hiện gian lận).
+    \end{itemize}
+\end{itemize}
+\item Hybrid Naïve Bayes:
+\begin{itemize}
+    \item Mô tả: Hybrid Naïve Bayes kết hợp các loại hình Naïve Bayes khác nhau, thường kết hợp Multinomial Naive Bayes và Gaussian Naive Bayes để xử lý các dữ liệu có cả đặc trưng rời rạc và liên tục.
+\clearpage
+    \item Ứng dụng:
+    \begin{itemize}
+        \item Xử lý dữ liệu hỗn hợp: Cải thiện hiệu suất của mô hình trên các loại dữ liệu phức tạp có cả đặc trưng rời rạc (như từ ngữ) và liên tục (như các thông số vật lý).
+        \item Các hệ thống gợi ý và dự báo: Trong các hệ thống đề xuất sản phẩm hoặc phân tích hành vi người dùng với dữ liệu hỗn hợp.
+    \end{itemize}
+\end{itemize}
+\item Tree Augmented Naïve Bayes (TAN):
+\begin{itemize}
+    \item Mô tả: TAN là một biến thể của Naïve Bayes, thay vì giả định rằng các đặc trưng đầu vào là độc lập có điều kiện, nó sử dụng một cây Bayesian để mô hình hóa các mối quan hệ tương tác giữa các đặc trưng. TAN cho phép các đặc trưng tương tác với nhau, giúp giảm bớt sự ngây thơ của giả định Naïve Bayes.
+    \item Ứng dụng:
+    \begin{itemize}
+        \item Mô hình hóa mối quan hệ phức tạp giữa các đặc trưng: Thích hợp cho các bài toán mà các đặc trưng không độc lập, chẳng hạn như phân tích hành vi người tiêu dùng hoặc dự đoán y học.
+        \item Các hệ thống phức tạp: Như hệ thống chẩn đoán y tế hoặc các hệ thống dự đoán tài chính nơi các đặc trưng có mối quan hệ tương tác phức tạp.
+    \end{itemize}
+\end{itemize}
+
+\end{enumerate}
+
+\section{Phân loại đa thức Naïve Bayes:}
+
+\subsection{Đặc điểm của thuật toán phân loại đa thức Multinomial Naïve Bayes:}
+
+Giả định Naïve Bayes: giả định rằng các đặc trưng đầu vào là độc lập có điều kiện, tức là giá trị của một đặc trưng không phụ thuộc vào các đặc trưng khác khi đã biết lớp của mẫu. Mặc dù giả định này thường không được thực tế, nhưng mô hình vẫn hoạt động hiệu quả trong nhiều trường hợp thực tế.
+
+Phân phối Multinomial: mô hình này thích hợp cho các tác vụ phân loại dựa trên các đặc trưng đếm, nơi mỗi đặc trưng có thể có nhiều hơn hai giá trị rời rạc. 
+
+-	Ví dụ phổ biến là phân loại văn bản dựa trên tần suất xuất hiện các từ.
+
+Sử dụng xác suất: Multinomial Naïve Bayes sử dụng nguyên tắc của xác suất để tính toán xác suất của một mẫu thuộc về mỗi lớp dựa trên các đặc trưng của nó.
+
+Thuật ngữ “ đa thức” (Multinomial) dùng để chỉ loại phân phối dữ liệu được mô hình giả định. Các tính năng trong phân loại văn bản thường là số từ hoặc tần số thuật ngữ. Phân phối đa thức được sử dụng để ước tính khả năng nhìn thấy một tập hợp số từ cụ thể trong tài liệu.
+\clearpage
+\subsection{Công thức của định lý Multinomial Naïve Bayes:}
+
+\begin{itemize}
+    \item Để tính toán xác suất của một văn bản \( D \) thuộc về một lớp \( C_k \), ta sử dụng công thức:
+
+\[
+P(C_k \mid D) \propto P(C_k) \prod_{i=1}^{n} P(w_i \mid C_k)^{f_i}
+\]
+    \item Trong đó:
+\begin{itemize}
+    \item \( P(C_k \mid D) \) là xác suất của lớp \( C_k \) khi biết văn bản \( D \).
+    \item \( P(C_k) \) là xác suất tiên nghiệm của lớp \( C_k \).
+    \item \( w_i \) là từ thứ \( i \) trong từ vựng.
+    \item \( f_i \) là số lần xuất hiện của từ \( w_i \) trong văn bản \( D \).
+    \item \( P(w_i \mid C_k) \) là xác suất có điều kiện của từ \( w_i \) xuất hiện trong lớp \( C_k \).
+\end{itemize}
+
+    \item Xác suất tiên nghiệm \( P(C_k) \): Xác suất tiên nghiệm của lớp \( C_k \) được tính bằng cách lấy tỷ lệ số văn bản trong lớp \( C_k \) so với tổng số văn bản:
+\[
+P(C_k) = \frac{N_{C_k}}{N}
+\]
+    \item Trong đó:
+\begin{itemize}
+    \item \( N_{C_k} \) là số văn bản thuộc lớp \( C_k \).
+    \item \( N \) là tổng số văn bản.
+\end{itemize}
+
+    \item Xác suất có điều kiện \( P(w_i \mid C_k) \): Để tính xác suất có điều kiện của một từ \( w_i \) xuất hiện trong lớp \( C_k \), chúng ta sử dụng công thức:
+\[
+P(w_i \mid C_k) = \frac{N_{w_i \mid C_k}}{N_{C_k}}
+\]
+
+    \item Trong đó:
+\begin{itemize}
+    \item \( N_{w_i \mid C_k} \) là số lần từ \( w_i \) xuất hiện trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item \( N_{C_k} \) là tổng số từ trong tất cả văn bản thuộc lớp \( C_k \).
+\end{itemize}
+
+\end{itemize}
+\clearpage
+\subsection{Laplace Smoothing:}
+
+Laplace Smoothing, còn được gọi là Additive Smoothing, là một kỹ thuật được sử dụng trong xác suất và thống kê để tránh vấn đề xác suất bằng 0 khi xử lý dữ liệu văn bản. Trong bài toán Multinomial Naive Bayes, Laplace Smoothing được áp dụng để đảm bảo rằng tất cả các từ trong từ vựng đều có một xác suất dương không bằng 0, ngay cả khi chúng không xuất hiện trong dữ liệu huấn luyện của một lớp cụ thể.
+
+Công Thức Laplace Smoothing:
+
+\begin{itemize}
+    \item Để tính xác suất có điều kiện \( P(w_i \mid C_k) \) của một từ \( w_i \) trong lớp \( C_k \) khi sử dụng Laplace Smoothing, chúng ta sử dụng công thức sau:
+
+\[
+P(w_i \mid C_k) = \frac{N_{w_i \mid C_k} + \alpha}{N_{C_k} + \alpha \cdot |V|}
+\]
+
+    \item Trong đó:
+\begin{itemize}
+    \item \( N_{w_i \mid C_k} \) là số lần từ \( w_i \) xuất hiện trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item \( N_{C_k} \) là tổng số từ trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item \( \alpha \) là tham số làm trơn, thường được đặt là 1.
+    \item \( |V| \) là kích thước từ vựng (tổng số từ duy nhất trong tập dữ liệu).
+\end{itemize}
+
+    \item Giải thích công thức:
+\begin{itemize}
+    \item Tham số làm trơn \( \alpha \): Giá trị \( \alpha \) thường được đặt là 1 để đảm bảo rằng tất cả các từ trong từ vựng đều có xác suất dương. Giá trị này có thể được điều chỉnh dựa trên yêu cầu cụ thể của bài toán.
+    \item Số lần xuất hiện của từ \( N_{w_i \mid C_k} \): Là số lần từ \( w_i \) xuất hiện trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item Tổng số từ trong lớp \( N_{C_k} \): Là tổng số từ trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item Kích thước từ vựng \( |V| \): Là tổng số từ duy nhất trong từ vựng của tập dữ liệu.
+\end{itemize}
+
+\end{itemize}
+\clearpage
+\subsection{Chứng minh định lý Multinomial Naïve Bayes:}
+
+Để chứng minh tính đúng đắn của thuật toán Multinomial Naïve Bayes, ta cần trải qua nhiều bước tính toán:
+
+\begin{enumerate}
+    \item Định lý Bayes:
+
+Theo định lý Bayes, xác suất của lớp \( C_k \) khi biết văn bản \( D \) được tính như sau:
+
+\[
+P(C_k \mid D) = \frac{P(D \mid C_k) \cdot P(C_k)}{P(D)} \tag{1}
+\]
+\begin{itemize}
+    \item Trong đó:
+\begin{itemize}
+    \item \( P(D \mid C_k) \) là xác suất có điều kiện của văn bản \( D \) khi biết lớp \( C_k \).
+    \item \( P(C_k) \) là xác suất tiên nghiệm của lớp \( C_k \).
+    \item \( P(D) \) là xác suất tiên nghiệm của văn bản \( D \).
+\end{itemize}
+\end{itemize}
+
+    \item Xác suất tiên nghiệm:
+
+Xác suất tiên nghiệm của lớp \( C_k \) được tính như sau:
+
+\[
+P(C_k) = \frac{N_{C_k}}{N} \tag{2}
+\]
+\begin{itemize}
+    \item Trong đó:
+\begin{itemize}
+    \item \( N_{C_k} \) là số văn bản thuộc lớp \( C_k \).
+    \item \( N \) là tổng số văn bản.
+    \item 
+\end{itemize}
+\end{itemize}
+
+
+    \item Xác suất có điều kiện của văn bản \( D \) khi biết lớp \( C_k \):
+
+\begin{itemize}
+    \item Với giả định các từ trong văn bản là độc lập có điều kiện khi biết lớp \( C_k \), xác suất có điều kiện của văn bản \( D \) khi biết lớp \( C_k \) là:
+
+\[
+P(D \mid C_k) = P(w_1, w_2, \dots, w_n \mid C_k)
+\]
+
+    \item Do giả định độc lập có điều kiện, ta có:
+
+\[
+P(D \mid C_k) = \prod_{i=1}^{n} P(w_i \mid C_k)^{f_i} \tag{3}
+\]
+
+    \item Trong đó:
+
+\begin{itemize}
+    \item \( f_i \) là số lần xuất hiện của từ \( w_i \) trong văn bản \( D \).
+\end{itemize}
+\end{itemize}
+\clearpage
+    \item Xác suất có điều kiện của từ \( w_i \) xuất hiện trong lớp \( C_k \):
+
+\[
+P(w_i \mid C_k) = \frac{N_{w_i \mid C_k}}{N_{C_k}} \tag{4}
+\]
+\begin{itemize}
+    \item Trong đó:
+
+\begin{itemize}
+    \item \( N_{w_i \mid C_k} \) là số lần từ \( w_i \) xuất hiện trong tất cả các văn bản thuộc lớp \( C_k \).
+    \item \( N_{C_k} \) là tổng số từ trong tất cả các văn bản thuộc lớp \( C_k \).
+\end{itemize}
+
+    \item Để tránh vấn đề xác suất bằng 0, ta sử dụng Laplace smoothing:
+\[
+P(w_i \mid C_k) = \frac{N_{w_i \mid C_k} + \alpha}{N_{C_k} + \alpha \cdot |V|} \tag{5}
+\]
+
+    \item Trong đó:
+
+\begin{itemize}
+    \item \( \alpha \) là tham số làm trơn, thường được đặt là 1.
+    \item \( |V| \) là kích thước từ vựng.
+\end{itemize}
+\end{itemize}
+
+     \item Áp dụng vào Công thức định lý Bayes:
+
+\begin{itemize}
+    \item Thay các công thức (1), (2), (3), (4), (5) vào định lý Bayes, ta có:
+
+\[
+P(C_k \mid D) = \frac{P(D \mid C_k) \cdot P(C_k)}{P(D)}
+\]
+
+    \item Do \( P(D) \) là hằng số không phụ thuộc vào lớp \( C_k \), ta có thể bỏ qua \( P(D) \) khi so sánh giữa các lớp. Từ đó công thức trở thành:
+
+\[
+P(C_k \mid D) \propto P(C_k) \cdot P(D \mid C_k)
+\]
+
+    \item Thay \( P(D \mid C_k) \) bằng \( \prod_{i=1}^{n} P(w_i \mid C_k)^{f_i} \), ta được:
+
+\[
+P(C_k \mid D) \propto P(C_k) \cdot \prod_{i=1}^{n} P(w_i \mid C_k)^{f_i}
+\]
+
+    \item Tối đa hóa xác suất:
+
+Để xác định lớp \( C_k \) có xác suất cao nhất, ta tối đa hóa \( P(C_k \mid D) \):
+
+\[
+\hat{C} = \arg\max_{C_k} P(C_k) \cdot \prod_{i=1}^{n} P(w_i \mid C_k)^{f_i}
+\]
+
+\end{itemize}
+
+\end{enumerate}
+\clearpage
+\subsection{Ví dụ minh họa Multinomial Naïve Bayes:}
+
+Giả sử chúng ta có một tập dữ liệu văn bản với ba ngôn ngữ: tiếng Anh (English), tiếng Pháp (French), và tiếng Tây Ban Nha (Spanish).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Ngôn ngữ} & \textbf{Câu} \\
+\hline
+English & I love you \\
+English & I like apples \\
+English & You are amazing \\
+French & Je t'aime \\
+French & J'aime les pommes \\
+French & Tu es incroyable \\
+Spanish & Te quiero \\
+Spanish & Me gustan las manzanas \\
+Spanish & Eres increíble \\
+\hline
+\end{tabular}
+\caption{Bảng các ngôn ngữ và ví dụ.}
+\end{table}
+
+\textbf{Bước 1: Xây dựng từ vựng:}
+
+Từ vựng (\textit{vocabulary}) bao gồm tất cả các từ xuất hiện trong tập dữ liệu:
+
+\begin{multline*}
+\{\text{I, love, you, like, apples, are, amazing, Je, t’aime, J’aime, les, pommes,} \\
+\text{Tu, es, incroyable, Te, quiero, Me, gustan, las, manzanas, Eres, increíble}\}
+\end{multline*}
+
+Tổng cộng có 22 từ.
+
+\textbf{Bước 2: Tính xác suất tiên nghiệm của mỗi ngôn ngữ:}
+\[
+P(\text{English}) = \frac{3}{9} = \frac{1}{3} \approx 0.333
+\]
+\[
+P(\text{French}) = \frac{3}{9} = \frac{1}{3} \approx 0.333
+\]
+\[
+P(\text{Spanish}) = \frac{3}{9} = \frac{1}{3} \approx 0.333
+\]
+
+\textbf{Bước 3: Tính xác suất có điều kiện \( P(w_i \mid C_k) \) = số lần xuất hiện của từ trong ngôn ngữ \(\mid \) ngôn ngữ:}
+
+\begin{enumerate}
+    \item Trường hợp không áp dụng Laplace smoothing:
+    \begin{itemize}
+        \item English:
+\[
+P(\text{I | English}) = \frac{2}{7} \approx 0.286
+\]
+\[
+P(\text{love | English}) = \frac{1}{7} \approx 0.143
+\]
+\[
+P(\text{you | English}) = \frac{1}{7} \approx 0.143
+\]
+\[
+P(\text{like | English}) = \frac{1}{7} \approx 0.143
+\]
+\[
+P(\text{apples | English}) = \frac{1}{7} \approx 0.143
+\]
+\[
+P(\text{are | English}) = \frac{1}{7} \approx 0.143
+\]
+\[
+P(\text{amazing | English}) = \frac{1}{7} \approx 0.143
+\]
+
+        \item French:
+\[
+P(\text{Je | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{t'aime | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{J'aime | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{les | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{pommes | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{Tu | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{es | French}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{incroyable | French}) = \frac{1}{8} = 0.125
+\]
+
+        \item Spanish:
+\[
+P(\text{Te | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{quiero | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{Me | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{gustan | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{las | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{manzanas | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{Eres | Spanish}) = \frac{1}{8} = 0.125
+\]
+\[
+P(\text{increíble | Spanish}) = \frac{1}{8} = 0.125
+\]
+    \end{itemize}
+    \clearpage
+    \item Trường hợp áp dụng Laplace smoothing: Sử dụng Laplace smoothing với \(\alpha = 1\).
+    \begin{itemize}
+        \item English:
+  \[
+  P(\text{I} | \text{English}) = \frac{2+1}{7+22} = \frac{3}{29} \approx 0.103
+  \]
+  \[
+  P(\text{love} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{you} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{like} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{apples} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{are} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{amazing} | \text{English}) = \frac{1+1}{7+22} = \frac{2}{29} \approx 0.069
+  \]
+  \[
+  P(\text{other} | \text{English}) = \frac{0+1}{7+22} = \frac{1}{29} \approx 0.034
+  \]
+
+        \item French:
+  \[
+  P(\text{Je} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{t'aime} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{J'aime} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{les} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{pommes} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{Tu} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{es} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{incroyable} | \text{French}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{other} | \text{French}) = \frac{0+1}{8+22} = \frac{1}{30} \approx 0.033
+  \]
+
+        \item Spanish:
+  \[
+  P(\text{Te} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{quiero} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{Me} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{gustan} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{las} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{manzanas} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{Eres} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{increíble} | \text{Spanish}) = \frac{1+1}{8+22} = \frac{2}{30} \approx 0.067
+  \]
+  \[
+  P(\text{other} | \text{Spanish}) = \frac{0+1}{8+22} = \frac{1}{30} \approx 0.033
+  \]
+    \end{itemize}
+
+\end{enumerate}
+
+
+\textbf{Bước 4: Tính xác suất tổng hợp:}
+
+Giả sử câu cần phân loại là: "I love you".
+
+Câu này có thể biểu diễn như sau:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sentence} & \textbf{I} & \textbf{Love} & \textbf{You} \\
+\hline
+"I love  1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption{Bảng biểu diễn dữ liệu đầu vào mới.}
+\end{table}
+
+\begin{itemize}
+    \item Trường hợp không áp dụng Laplace smoothing:
+    \begin{itemize}
+        \item English:
+\begin{multline*}
+P(\text{English} \mid \text{I love you}) \propto P(\text{English}) \times P(\text{I} \mid \text{English}) \\
+\times P(\text{love} \mid \text{English}) \times P(\text{you} \mid \text{English})
+\end{multline*}
+\begin{multline*}
+P(\text{English} \mid \text{I love you}) \propto 0.333 \times 0.286 \times 0.143 \times 0.143 \\
+\approx 0.333 \times 0.0059 \approx 0.002
+\end{multline*}
+
+        \item French:
+\begin{multline*}
+P(\text{French} \mid \text{I love you}) \propto P(\text{French}) \times P(\text{I} \mid \text{French}) \\
+\times P(\text{love} \mid \text{French}) \times P(\text{you} \mid \text{French})
+\end{multline*}
+\[
+P(\text{French} \mid \text{I love you}) = 0
+\]
+
+        \item Spanish:
+\begin{multline*}
+P(\text{Spanish} \mid \text{I love you}) \propto P(\text{Spanish}) \times P(\text{I} \mid \text{Spanish}) \\
+\times P(\text{love} \mid \text{Spanish}) \times P(\text{you} \mid \text{Spanish})
+\end{multline*}
+\[
+P(\text{Spanish} \mid \text{I love you}) = 0
+\]
+    \end{itemize}
+    \clearpage
+    \item Trường hợp áp dụng Laplace smoothing:
+    \begin{itemize}
+        \item English:
+\begin{multline*}
+P(\text{English} \mid \text{I love you}) \propto P(\text{English}) \times P(\text{I} \mid \text{English}) \\
+\times P(\text{love} \mid \text{English}) \times P(\text{you} \mid \text{English})
+\end{multline*}
+\begin{multline*}
+P(\text{English} \mid \text{I love you}) \propto 0.333 \times 0.103 \times 0.069 \times 0.069 \\
+\approx 0.333 \times 0.0004941 \approx 0.0001649
+\end{multline*}
+
+        \item French:
+\begin{multline*}
+P(\text{French} \mid \text{I love you}) \propto P(\text{French}) \times P(\text{I} \mid \text{French}) \\
+\times P(\text{love} \mid \text{French}) \times P(\text{you} \mid \text{French})
+\end{multline*}
+\begin{multline*}
+P(\text{French} \mid \text{I love you}) \propto 0.333 \times 0.033 \times 0.033 \times 0.033 \\
+\approx 0.333 \times 0.000035937 \approx 0.00001198
+\end{multline*}
+
+        \item Spanish:
+\begin{multline*}
+P(\text{Spanish} \mid \text{I love you}) \propto P(\text{Spanish}) \times P(\text{I} \mid \text{Spanish}) \\
+\times P(\text{love} \mid \text{Spanish}) \times P(\text{you} \mid \text{Spanish})
+\end{multline*}
+\begin{multline*}
+P(\text{Spanish} \mid \text{I love you}) \propto 0.333 \times 0.033 \times 0.033 \times 0.033 \\
+\approx 0.333 \times 0.000035937 \approx 0.00001198
+\end{multline*}
+    \end{itemize}
+\end{itemize}
+
+
+\textbf{Bước 5: Phân lớp:}  
+
+So sánh xác suất tổng hợp:
+
+\begin{itemize}
+    \item Không Áp Dụng Laplace Smoothing:
+    \begin{itemize}
+        \item \( P(\text{English} | \text{I love you}) \approx 0.002 \)
+        \item \( P(\text{French} | \text{I love you}) = 0 \)
+        \item \( P(\text{Spanish} | \text{I love you}) = 0 \)
+        
+Câu "I love you" được phân loại là tiếng Anh (English).
+
+    \end{itemize}
+    \item Áp Dụng Laplace Smoothing:
+    \begin{itemize}
+        \item \( P(\text{English} | \text{I love you}) \approx 0.0001649 \)
+        \item \( P(\text{French} | \text{I love you}) \approx 0.00001198 \)
+        \item \( P(\text{Spanish} | \text{I love you}) \approx 0.00001198 \)
+
+        Câu "I love you" được phân loại là tiếng Anh (English).
+        
+    \end{itemize}
+\end{itemize}
+\clearpage
